@@ -1,29 +1,128 @@
-form {
-    background-color: var(--bg-primary-color);
-  }
-  form {
-    background-color: var(--bg-primary-color);
-    margin: 20px;
-    padding: 20px;
-    font-size: 0.7rem;
-  }
-  table{
-    width: 100%;
-    border-collapse: collapse;
-    border: 1px solid black;/*outside border*/
-  }
-  th, td{
-    border: 1px solid black;
-    padding: 8px;
-    text-align: center;/*o center all the text*/
-  }
-  th{
-    background-color: #f2f2f2;/*background color for the cells*/
-  }
-/*for Q2*/
-input:valid{
-  background-color: green;
+/* CSS file: style.css */
+
+/* General Reset and Box-Sizing */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
 }
-input:invalid{
-  background-color: lightpink;
+
+/* Navigation Styling */
+nav {
+  background-color: #333;
+  padding: 10px 0;
+}
+
+nav ul {
+  list-style: none;
+  display: inline;
+  margin: 0 20px;
+}
+
+nav ul a {
+  color: white;
+  text-decoration: none;
+  padding: 10px 15px;
+  display: inline-block;
+}
+
+nav ul a:hover {
+  background-color: #555;
+}
+
+/* Form Styling */
+form {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+}
+
+legend {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+label {
+  display: block;
+  margin: 15px 0 5px;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+select:focus {
+  border-color: #555;
+  outline: none;
+}
+
+input[type="submit"] {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  background-color: #333;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 20px;
+  border-radius: 5px;
+}
+
+input[type="submit"]:hover {
+  background-color: #555;
+}
+
+/* Footer Styling */
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #333;
+  color: white;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  form {
+    padding: 15px;
+  }
+
+  legend {
+    font-size: 1.2rem;
+  }
+
+  input[type="submit"] {
+    padding: 12px;
+    font-size: 0.9rem;
+  }
+
+  nav ul {
+    display: block;
+    text-align: center;
+  }
+
+  nav ul a {
+    padding: 10px 0;
+    display: block;
+    margin: 5px 0;
+  }
 }

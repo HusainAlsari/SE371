@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <title>Help page</title>
-        <script src="./css/style.css"></script>
+        <link REL="stylesheet" HREF="./css/style.css">
         <nav>
             <ul><a href="main.html">Main</a></ul>
             <ul><a href="register.html">Register</a></ul>  
@@ -11,7 +11,26 @@
         </nav>
     </head>
     <body>
-        
+        <form method ="post">
+            <legend>Technical issue form</legend>
+
+            <label for="firstName">First name</label>
+            <input type="text" id="firstName" name="firstName" pattern="[a-zA-Z]{2,20}" title="2 to 20 letters">
+
+            <label for="lastName">Last name</label>
+            <input type="text" id="lastName" name="lastName" pattern="[a-zA-Z]{2,20}" title="2 to 20 letters">
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" title="An email">
+
+            <label for ="phoneNumber">Phone Number</label>
+            <input type="text" id="phoneNumber" name="phoneNumber" required pattern="[0-9]{10,14}" title="a phone number of 10 to 14 digits" />
+
+            <lebel for="issue">What Is your issue? </lebel>
+            <input type="text" id="issue" name="issue" title="plaese explain your issue">
+            <input type="submit">
+            <input type="reset">
+        </form>
         <footer>
 
         </footer>
