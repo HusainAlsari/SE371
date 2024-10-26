@@ -52,10 +52,15 @@ function sortById(dataArray) {
     return dataArray.toSorted((a, b) => a.id - b.id);
 }
 
-function SearchById(dataArray,id) {
-    for (i=0;i<dataArray.length;i++){
-        if(dataArray[i].id==id)
-        return `<h>${dataArray[i]}<h>`;
-    }
-        return "not found";
+function searchPatient() {
+    const inputId = document.getElementById("Pid").value.trim();
+    const tableBody = document.getElementById("tableBody");
+
+    // Clear previous results
+    tableBody.innerHTML = "";
+
+    // Get customer data by ID
+    const customer = getCustomerByID(inputId);
+    // Insert the created row into the table body
+    tableBody.innerHTML = createRow(customer);
 }
