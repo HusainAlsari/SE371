@@ -1,0 +1,29 @@
+form {
+    background-color: var(--bg-primary-color);
+  }
+  form {
+    background-color: var(--bg-primary-color);
+    margin: 20px;
+    padding: 20px;
+    font-size: 0.7rem;
+  }
+  table{
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid black;/*outside border*/
+  }
+  th, td{
+    border: 1px solid black;
+    padding: 8px;
+    text-align: center;/*o center all the text*/
+  }
+  th{
+    background-color: #f2f2f2;/*background color for the cells*/
+  }
+/*for Q2*/
+input:valid{
+  background-color: green;
+}
+input:invalid{
+  background-color: lightpink;
+}
