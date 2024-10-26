@@ -9,7 +9,7 @@ function getCustomerByID(id, dataArray) {
             return dataArray[i]; // Return the matching customer object
         }
     }
-    return null; // Return null if no match is found
+    return null; 
 }
 
 // Function to create an HTML table row for a customer by ID
@@ -44,7 +44,7 @@ function generateTable(dataArray) {
 }
 
 // Write the table to the page
-document.write("<h2>Customer Table</h2>");
+document.write("<h2>Patient Table</h2>");
 document.write(generateTable(dataArray));
 
 // Sorting functions
@@ -52,13 +52,10 @@ function sortById(dataArray) {
     return dataArray.toSorted((a, b) => a.id - b.id);
 }
 
-function sortByCity(dataArray) {
-    return dataArray.toSorted((a, b) => a.address.city.localeCompare(b.address.city));
+function SearchById(dataArray,id) {
+    for (i=0;i<dataArray.length;i++){
+        if(dataArray[i].id==id)
+        return `<h>${dataArray[i]}<h>`;
+    }
+        return "not found";
 }
-
-// Optional: If you want to sort and display the sorted table, you can uncomment the following lines
-document.write("<h2>Sorted by ID</h2>");
-document.write(generateTable(sortById(dataArray)));
-
-document.write("<h2>Sorted by City</h2>");
-document.write(generateTable(sortByCity(dataArray)));
