@@ -1,0 +1,32 @@
+<!DOCTYPE>
+<html>
+    <head>
+        <script src="script.js"></script>
+    </head>
+    <body>
+        <div id="manger">
+            <script>
+            // function createMangerAritcal(position,name,lastname,email){
+            //     let a=`<artical>`+`<h2>${position}</h2>`+`<p>${name}</p>`+`<p>${lastname}</p>`+`<p>${email}</p>`+`</artical>`;
+            //     return a;
+            //     }  
+            //     let text=createMangerAritcal("SE222","ahmed","ms3ood", "@emil");     
+            
+           let x= createMangerAritcal("SE222","ahmed","ms3ood", "@emil");    
+            document.write(x);
+            let y= createMangerAritcal("SE371","MOHAMMED","ms3ood", "@emil");    
+            document.write(y);
+
+            const data = '[{"id": 14589634, "name": "Salah", "lastname": "Abid","address": { "nb": 25, "street": "Salaheddine", "city": "Riyadh" }}, \
+                {"id": 14509658, "name": "Ahmed", "lastname": "Anezi","address": { "nb": 14, "street": "Annasr", "city": "Jeddah" }}, \
+                {"id": 14563254, "name": "Bahaa", "lastname": "Thebiti","address": { "nb": 521, "street": "Aljanoub", "city": "Taif" }}, \
+                {"id": 145432659, "name": "Nawaf", "lastname": "Dousari","address": { "nb": 241, "street": "Olaya", "city": "Riyadh" }}, \
+                {"id": 14515879, "name": "Abdelaziz", "lastname": "Qurachi","address": { "nb": 72, "street": "Corniche", "city": "Jeddah" }}, \
+                {"id": 14523625, "name": "Saber", "lastname": "Thunayan","address": { "nb": 169, "street": "Al Yamama", "city": "Jeddah" }} \
+                ]';
+                let a=JSON.parse(data);
+                a.forEach(c => document.write(createMangerAritcal(c.id, c.name,c.lastname,c.address.city)));            
+            </script>
+        </div>
+    </body>
+</html>
