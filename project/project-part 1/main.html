@@ -1,23 +1,23 @@
-<!DOCTYPE>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <title>Home page</title>
-        <link REL="stylesheet" HREF="./css/style.css">
-
-        <script src="./javaScript/script.js"></script>
+        <link rel="stylesheet" href="./css/style.css">
+        <script src="./javaScript/script.js" defer></script>
+    </head>
+    <body>
         <nav>
             <ul><a href="main.html">Main</a></ul>
             <ul><a href="register.html">Register</a></ul>  
             <ul><a href="about.html">About</a></ul>
             <ul><a href="helpPage.html">Help Page</a></ul>    
         </nav>
-    </head>
-    <body>
-        <h1>Search for patients</h1>
+
+        <h1>Search for Patients</h1>
         <form>
-            <label for="Pid">Enter the Id of the patient</label>
-            <input type="text" name="Pid" id="Pid">
-            <button type="button" onclick="getPatientId()">Search</button>
+            <label for="Pid">Enter the ID of the patient:</label>
+            <input type="text" name="Pid" id="Pid" placeholder="Patient ID">
+            <button type="button" onclick="searchPatient()">Search</button>
         </form>
 
         <section id="resultSection">
@@ -36,10 +36,6 @@
             </table>
         </section>
 
-        
-        <script src="data.js"></script>
-        <script src="script.js"></script>
-        <footer>
-        </footer>
+        <footer></footer>
     </body>
 </html>

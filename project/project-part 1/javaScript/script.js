@@ -1,11 +1,18 @@
-//const data = require('./data'); // Import the data
+// Assuming 'data' is a JSON string or an array of patient objects
+const data = '[{"id": 14589634, "name": "Salah", "lastname": "Abid","address": { "nb": 25, "street": "Salaheddine", "city": "Riyadh" }}, \
+  {"id": 14509658, "name": "Ahmed", "lastname": "Anezi","address": { "nb": 14, "street": "Annasr", "city": "Jeddah" }}, \
+  {"id": 14563254, "name": "Bahaa", "lastname": "Thebiti","address": { "nb": 521, "street": "Aljanoub", "city": "Taif" }}, \
+  {"id": 145432659, "name": "Nawaf", "lastname": "Dousari","address": { "nb": 241, "street": "Olaya", "city": "Riyadh" }}, \
+  {"id": 14515879, "name": "Abdelaziz", "lastname": "Qurachi","address": { "nb": 72, "street": "Corniche", "city": "Jeddah" }}, \
+  {"id": 14523625, "name": "Saber", "lastname": "Thunayan","address": { "nb": 169, "street": "Al Yamama", "city": "Jeddah" }} \
+]'; 
 
-const dataArray = JSON.parse(data); // Parse the data
+const dataArray = JSON.parse(data); // Parse the data from JSON format
 
 // Function to get a customer by ID
 function getCustomerByID(id, dataArray) {
     for (let i = 0; i < dataArray.length; i++) {
-        if (id === dataArray[i].id) {
+        if (id == dataArray[i].id) {
             return dataArray[i]; // Return the matching customer object
         }
     }
@@ -13,9 +20,7 @@ function getCustomerByID(id, dataArray) {
 }
 
 // Function to create an HTML table row for a customer by ID
-function createRowById(id, dataArray) {
-    let customer = getCustomerByID(id, dataArray);
-    
+function createRowById(customer) {
     if (customer === null) {
         return `<tr><td colspan="4">Customer not found</td></tr>`;
     }
@@ -30,37 +35,17 @@ function createRowById(id, dataArray) {
     return row;
 }
 
-// Function to generate a complete table
-function generateTable(dataArray) {
-    let table = `<table border="1">`;
-    table += `<tr><th>ID</th><th>Name</th><th>Last Name</th><th>Address</th></tr>`;
-    
-    for (let i = 0; i < dataArray.length; i++) {
-        table += createRowById(dataArray[i].id, dataArray); // Use the row function
-    }
-    
-    table += `</table>`;
-    return table;
-}
-
-// Write the table to the page
-document.write("<h2>Patient Table</h2>");
-document.write(generateTable(dataArray));
-
-// Sorting functions
-function sortById(dataArray) {
-    return dataArray.toSorted((a, b) => a.id - b.id);
-}
-
+// Function to search for a patient by ID
 function searchPatient() {
-    const inputId = document.getElementById("Pid").value.trim();
+    const inputId = document.getElementById("Pid").value.trim(); // Get user input and trim whitespace
     const tableBody = document.getElementById("tableBody");
 
     // Clear previous results
     tableBody.innerHTML = "";
 
     // Get customer data by ID
-    const customer = getCustomerByID(inputId);
+    const customer = getCustomerByID(inputId, dataArray);
+
     // Insert the created row into the table body
-    tableBody.innerHTML = createRow(customer);
+    tableBody.innerHTML = createRowById(customer);
 }

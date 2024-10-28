@@ -1,4 +1,5 @@
 /* Root Variables */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 :root {
   --main-bg-color: #333;
   --hover-bg-color: #555;
@@ -116,18 +117,25 @@ table {
   gap: 10px;
 }
 
+table {
+  width: 100%; /* Set the width to 100% to fill the container */
+  margin: 20px auto; /* Adjusted margin to center the table */
+  border-collapse: collapse; /* Ensure there are no gaps between borders */
+}
+
 table, th, td {
   border: 1px solid var(--border-color);
 }
 
 th, td {
-  padding: 15px;
-  text-align: left;
+  padding: 15px; /* Padding inside cells */
+  text-align: center; /* Center-align text */
 }
 
 th {
   background-color: var(--main-bg-color);
   color: var(--text-color);
+  text-align: center;
 }
 
 tr:nth-child(even) {
@@ -137,7 +145,6 @@ tr:nth-child(even) {
 tr:hover {
   background-color: #ddd;
 }
-
 /* Footer Styling */
 footer {
   text-align: center;
