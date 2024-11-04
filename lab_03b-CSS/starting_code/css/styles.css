@@ -12,9 +12,7 @@ html {
     --radio-hover-color: #a3cef1;
     --radio-disabled-bg-color: #d9d9d9;
   }
-  form {
-    background-color: var(--bg-primary-color);
-  }
+
   form {
     background-color: var(--bg-primary-color);
     margin: 20px;
