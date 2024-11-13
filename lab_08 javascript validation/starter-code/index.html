@@ -10,6 +10,9 @@
   <!-- style sheets -->
   <link rel="stylesheet" href="css/css-reset.css">
   <link rel="stylesheet" href="css/styles.css">
+  <style>.red-border{
+    border: 1px solid red;
+  }</style>
 </head>
 <body>
   <header>
@@ -31,7 +34,6 @@
                 type="text"
                 id="firstName"
                 name="firstName"
-                required
                 title="2 to 20 letters" /><span id="firstName_err" class="error"></span>
             </div>
             <div>
@@ -40,7 +42,6 @@
                 type="text"
                 id="lastName"
                 name="lastName"
-                required
                 title="2 to 20 letters" /><span id="lastName_err" class="error"></span>
             </div>
             <div>
@@ -49,7 +50,6 @@
                 type="email"
                 id="email"
                 name="email"
-                required
                 title="An email" /><span id="email_err" class="error"></span>
             </div>
             <div>
@@ -58,7 +58,6 @@
                 type="text"
                 id="phoneNumber"
                 name="phoneNumber"
-                required
                 title="a phone number of 10 to 14 digits" /><span id="phoneNumber_err" class="error"></span>
             </div>
             <hr>
@@ -68,7 +67,6 @@
                 type="text"
                 id="address"
                 name="address"
-                required
                 size="30"
                 pattern="[a-zA-z ]{10,30}"
                 title="Address of no more than 30 characters" /><span id="address_err" class="error"></span>
@@ -79,7 +77,6 @@
                 type="text"
                 id="city"
                 name="city"
-                required
                 size="20"
                 pattern="[a-zA-Z ]{3,20}"
                 title="Address of no more than 30 characters" /><span id="city_err" class="error"></span>
@@ -108,7 +105,6 @@
                 type="text"
                 id="zipCode"
                 name="zipCode"
-                required
                 pattern="[0-9]{4,6}"
                 title="a zip code of 4 to 6 digits" /><span id="zipCode_err" class="error"></span>
             </div>
