@@ -18,8 +18,8 @@ app.get('/api/countries/v1/', async (request, response) => {
 
 // Create
 app.post('/api/countries/v1/', async (request, response) => {
-  const {id,name,phone_code}=req.body;
-  const newCountry=Country.build({id,name,phone_code})
+  const {id,name,phone_code}=request.body;
+  const newCountry=Country.build({id,name,phone_code});
 
   try{
     await newCountry.save();
