@@ -1,0 +1,196 @@
+/* Root Variables */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+:root {
+  --main-bg-color: #333;
+  --hover-bg-color: #555;
+  --light-bg-color: #f9f9f9;
+  --border-color: #ccc;
+  --text-color: white;
+  --highlight-color: #f0f8ff;
+  --font-size: 16px;
+}
+
+/* General Reset and Box-Sizing */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* Font Size for Root */
+html {
+  font-size: var(--font-size);
+}
+
+/* Navigation Styling */
+nav {
+  background-color: var(--main-bg-color);
+  padding: 15px 0;
+  display: flex;
+  justify-content: center;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+nav ul a {
+  color: var(--text-color);
+  text-decoration: none;
+  padding: 10px 15px;
+}
+
+nav ul a:hover {
+  background-color: var(--hover-bg-color);
+}
+
+/* Form Styling */
+form {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  background-color: var(--light-bg-color);
+  display: grid;
+  gap: 15px;
+}
+
+legend {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+label {
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+select,
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--hover-bg-color);
+  background-color: var(--highlight-color);
+  outline: none;
+}
+
+/* Submit and Reset Buttons */
+input[type="submit"],
+input[type="reset"] {
+  padding: 15px;
+  border: none;
+  background-color: var(--main-bg-color);
+  color: var(--text-color);
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+input[type="submit"]:hover,
+input[type="reset"]:hover {
+  background-color: var(--hover-bg-color);
+}
+
+/* Table Styling */
+table {
+  width: 80%;
+  margin: 50px auto;
+  border-collapse: collapse;
+  display: grid;
+  gap: 10px;
+}
+
+table {
+  width: 100%; /* Set the width to 100% to fill the container */
+  margin: 20px auto; /* Adjusted margin to center the table */
+  border-collapse: collapse; /* Ensure there are no gaps between borders */
+}
+
+table, th, td {
+  border: 1px solid var(--border-color);
+}
+
+th, td {
+  padding: 15px; /* Padding inside cells */
+  text-align: center; /* Center-align text */
+}
+
+th {
+  background-color: var(--main-bg-color);
+  color: var(--text-color);
+  text-align: center;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tr:hover {
+  background-color: #ddd;
+}
+/* Footer Styling */
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: var(--main-bg-color);
+  color: var(--text-color);
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  nav ul {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  form {
+    padding: 15px;
+    grid-template-columns: 1fr;
+  }
+
+  legend {
+    font-size: 1.2rem;
+  }
+
+  input[type="submit"],
+  input[type="reset"] {
+    padding: 12px;
+    font-size: 0.9rem;
+  }
+
+  table {
+    width: 100%;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 992px) {
+  form {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+h1,h2{
+  text-align: center;
+}
+p{
+  text-align: center;
+}
