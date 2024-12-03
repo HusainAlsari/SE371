@@ -31,7 +31,7 @@ const PatientRegistrationTable = db.sequelize.define('PatientRegistrationTable',
 const Technical_issue = db.sequelize.define('Technical_issue', {
     issue_id:{
         type: DataTypes.INTEGER,
-        autoIncrement: true, // Auto-generate the Pid
+        autoIncrement: true, // Auto-generate the issue id
         primaryKey: true
     },
     first_name:{
