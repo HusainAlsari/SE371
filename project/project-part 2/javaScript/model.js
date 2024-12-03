@@ -10,11 +10,9 @@ const PatientRegistrationTable = db.sequelize.define('PatientRegistrationTable',
     },
     first_name:{
         type: DataTypes.STRING,
-        unique:true
     },
     first_last:{
         type: DataTypes.STRING,
-        unique:true
     },
     email:{
         type: DataTypes.STRING,
@@ -24,9 +22,8 @@ const PatientRegistrationTable = db.sequelize.define('PatientRegistrationTable',
         type: DataTypes.STRING,
         unique:true
     },
-    deprtment:{
+    department:{
         type:DataTypes.STRING,
-        unique:true
     }
 
 });
@@ -39,9 +36,11 @@ const Technical_issue = db.sequelize.define('Technical_issue', {
     },
     first_name:{
         type: DataTypes.STRING,
-        unique:true
     },
     first_last:{
+        type: DataTypes.STRING,
+    },
+    email:{
         type: DataTypes.STRING,
         unique:true
     },
@@ -49,9 +48,8 @@ const Technical_issue = db.sequelize.define('Technical_issue', {
         type: DataTypes.STRING,
         unique:true
     },
-    deprtment:{
-        type:DataTypes.STRING,
-        unique:true
+    issue_discription:{
+        type: DataTypes.STRING,
     }
 });
 
