@@ -41,7 +41,16 @@
         </tr>
       </thead>
       <tbody>
-       
+       <% companies.forEach(comp=>{ %>
+        <tr>
+          <td><%= comp.id %></td>
+          <td><%= comp.name %></td>
+          <td><%= comp.address></td>
+          <td><%= comp.description></td>
+          <td><%= comp.capital></td>
+          <td><%= comp.owner></td>
+        </tr>
+       <% })%>
       </tbody>
     </table>
     <script src="./js/index.js"></script>

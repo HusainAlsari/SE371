@@ -2,7 +2,8 @@ const db = require("../config/database");
 const { DataTypes } = require('sequelize');
 
 const Company = db.sequelize.define('Company', {
-  id: { type: DataTypes.INTEGER, allowNull: false },
+  id: { type: DataTypes.INTEGER, allowNull: false,primaryKey:true 
+  },
   name: { type: DataTypes.STRING, allowNull: false },
   address: { type: DataTypes.STRING },
   description: { type: DataTypes.TEXT },
