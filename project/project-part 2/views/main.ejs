@@ -2,14 +2,15 @@
 <html lang="en">
     <head>
         <title>Home page</title>
-        <link rel="stylesheet" href="../public/css/style.css">
+        <link rel="stylesheet" href="/css-reset.css">
+        <link rel="stylesheet" href="/css/style.css">
     </head>
     <body>
         <nav>
-            <ul><a href="main.ejs">Main</a></ul>
-            <ul><a href="register.ejs">Register</a></ul>  
-            <ul><a href="about.ejs">About</a></ul>
-            <ul><a href="helpPage.ejs">Help Page</a></ul>    
+            <ul><a href="main">Main</a></ul>
+            <ul><a href="register">Register</a></ul>  
+            <ul><a href="about">About</a></ul>
+            <ul><a href="helpPage">Help Page</a></ul>    
         </nav>
 
         <h1>Search for Patients</h1>
@@ -25,17 +26,45 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Name</th>
+                        <th>First Name</th>
                         <th>Last Name</th>
-                        <th>Address</th>
+                        <th>Email</th>
+                        <th>Phone Number</th>
+                        <th>Department</th>
                     </tr>
                 </thead>
-                <tbody id="tableBody">
+                <tbody id="resultBody">
+                    <!-- Results will be dynamically inserted here -->
                 </tbody>
             </table>
         </section>
-        <p>Done by: Hussain Alsari, Feras Alswalim, Mazn Alasmari, Abdulwahab Alharthy </p>
-        <p><p>2024 &copyOmega</p></p>
+
+        <p>Done by: Hussain Alsari, Feras Alswalim, Mazn Alasmari, Abdulwahab Alharthy</p>
+        <p>2024 &copy; Omega</p>
         <footer></footer>
+
+        <script>
+            async function searchPatient() {
+                const patientId = document.getElementById('Pid').value;
+                const response = await fetch(`/api/patients/${patientId}`);
+                const patient = await response.json();
+
+                if (patient) {
+                    const resultBody = document.getElementById('resultBody');
+                    resultBody.innerHTML = `
+                        <tr>
+                            <td>${patient.Pid}</td>
+                            <td>${patient.first_name}</td>
+                            <td>${patient.last_name}</td>
+                            <td>${patient.email}</td>
+                            <td>${patient.phone_number}</td>
+                            <td>${patient.department}</td>
+                        </tr>
+                    `;
+                } else {
+                    alert('No patient found with this ID');
+                }
+            }
+        </script>
     </body>
 </html>

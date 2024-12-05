@@ -1,17 +1,18 @@
-<!DOCTYPE>
+<!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Regirestration</title>
+        <title>Registration</title>
         <nav>
-            <ul><a href="main.ejs">Main</a></ul>
-            <ul><a href="register.ejs">Register</a></ul>  
-            <ul><a href="about.ejs">About</a></ul>
-            <ul><a href="helpPage.ejs">Help Page</a></ul>   
+            <ul><a href="main">Main</a></ul>
+            <ul><a href="register">Register</a></ul>  
+            <ul><a href="about">About</a></ul>
+            <ul><a href="helpPage">Help Page</a></ul>     
         </nav>
-        <link REL="stylesheet" HREF="../public/css/style.css">
+        <link rel="stylesheet" href="/css-reset.css">
+        <link rel="stylesheet" href="/css/style.css">
     </head>
     <body>
-        <form method ="post"> 
+        <form method="post"> 
             <legend>Patient registration form</legend>
 
             <label for="firstName">First name</label>
@@ -23,25 +24,14 @@
             <label for="email">Email</label>
             <input type="email" id="email" name="email" title="An email">
 
-            <label for ="phoneNumber">Phone Number</label>
-            <input type="text" id="phoneNumber" name="phoneNumber" required pattern="[0-9]{10,14}" title="a phone number of 10 to 14 digits" />
+            <label for="phoneNumber">Phone Number</label>
+            <input type="text" id="phoneNumber" name="phoneNumber" required pattern="[0-9]{10,14}" title="a phone number of 10 to 14 digits">
 
-            <label for="department">department:</label>
-              <select name="region" id="region" required>
-                  <option value="1">Accident and emergency </option>
-                  <option value="2" selected>Admissions</option>
-                  <option value="3">Anesthetics</option>
-                  <option value="4">Cardiology</option>
-                  <option value="5">Critical Care</option>
-                  <option value="6">Diagnostic Imaging</option>
-                  <option value="7">Elderly Services</option>
-                  <option value="8">Gastroenterology</option>
-                  <option value="9">General Services</option>
-                  <option value="10">General Surgery</option>
-                  <option value="11">Hematology</option>
-              </select>
-              <input type="submit">
-              <input type="reset">
+            <label for="department">Department</label>
+            <input type="text" id="department" name="department" required>
+
+            <input type="submit">
+            <input type="reset">
         </form>
         <footer></footer>
     </body>
