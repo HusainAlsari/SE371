@@ -27,7 +27,7 @@ const PatientRegistrationTable = db.sequelize.define('PatientRegistrationTable',
     }
 
 });
-const Technical_issue = db.sequelize.define('Technical_issue', {
+const technical_issue = db.sequelize.define('technical_issue', {
     issue_id:{
         type: DataTypes.INTEGER,
         autoIncrement: true, // Auto-generate the issue id
@@ -53,4 +53,4 @@ const Technical_issue = db.sequelize.define('Technical_issue', {
 });
 db.sequelize.sync({ alter: true });
 
-module.exports = {PatientRegistrationTable, Technical_issue };
+module.exports = {PatientRegistrationTable, technical_issue };

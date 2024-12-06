@@ -2,7 +2,7 @@ const db = require("../config/database");
 const { DataTypes } = require('sequelize');
 
 //Technical issue form Table
-const Technical_issue = db.sequelize.define('Technical_issue', {
+const technical_issue = db.sequelize.define('technical_issue', {
     issue_id:{
         type: DataTypes.INTEGER,
         autoIncrement: true, // Auto-generate the issue id
@@ -29,4 +29,4 @@ const Technical_issue = db.sequelize.define('Technical_issue', {
 
 db.sequelize.sync({ alter: true });
 
-module.exports = {Technical_issue };
+module.exports = {technical_issue };

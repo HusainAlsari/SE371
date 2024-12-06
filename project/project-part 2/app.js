@@ -2,7 +2,8 @@ require("dotenv").config();
 const express = require("express");
 const methodOverride = require('method-override');
 const db = require("./config/database");
-const { PatientRegistrationTable } = require("./model/tables");
+const { PatientRegistrationTable } = require("./model/PatientRegistrationTable");
+const {technical_issue} =require("./model/Technical_issue")
 const app = express();
 
 app.use(express.json());
@@ -32,11 +33,6 @@ app.get("/helpPage", (req, res) => {
   });
 });
 
-// Handle 404 for invalid routes
-app.use((req, res) => {
-  res.status(404).render("404");
-});
-
 // Routes
 app.get('/main', async (req, res) => {
   try {
@@ -49,7 +45,7 @@ app.get('/main', async (req, res) => {
 });
 
 // Route for adding a new patient
-app.post('/v1/patients/', async (req, res) => {
+app.post('/v1/patients', async (req, res) => {
   try {
     const { Pid, first_name, last_name, email, phone_number, department } = req.body;
 
@@ -62,7 +58,7 @@ app.post('/v1/patients/', async (req, res) => {
       department: department
     });
 
-    res.redirect('/');
+    res.redirect('/main');
   } catch (error) {
     console.error('Error adding patient:', error);
     res.status(500).send('Error adding patient');
@@ -109,11 +105,11 @@ app.post('/v1/patients/update', async (req, res) => {
   }
 });
 
-app.post('/v1/technical_issues', async (req, res) => {
+app.post('/v1/technicalissues', async (req, res) => {
   try {
     const { first_name, last_name, email, phone_number, issue_description } = req.body;
 
-    await Technical_issue.create({
+    await technical_issue.create({
       first_name: first_name,
       last_name: last_name,
       email: email,
@@ -121,11 +117,16 @@ app.post('/v1/technical_issues', async (req, res) => {
       issue_description: issue_description
     });
 
-    res.redirect('/');
+    res.redirect('/helpPage');
   } catch (error) {
     console.error('Error submitting technical issue:', error);
     res.status(500).send('Error submitting technical issue');
   }
+});
+
+// Handle 404 for invalid routes
+app.use((req, res) => {
+  res.status(404).render("404");
 });
 
 // Start server and connect to database

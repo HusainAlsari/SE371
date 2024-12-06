@@ -1,18 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>Home page</title>
-        <link rel="stylesheet" href="/css-reset.css">
-        <link rel="stylesheet" href="/css/style.css">
-    </head>
-    <body>
-        <nav>
-            <ul><a href="main">Main</a></ul>
-            <ul><a href="register">Register</a></ul>  
-            <ul><a href="about">About</a></ul>
-            <ul><a href="helpPage">Help Page</a></ul>    
-        </nav>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="/css-reset.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/main">Main</a></li>
+            <li><a href="/register">Register</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/helpPage">Help Page</a></li>
+        </ul>
+    </nav>
 
+    <main>
         <h1>Search for Patients</h1>
         <form>
             <label for="Pid">Enter the ID of the patient:</label>
@@ -33,38 +38,32 @@
                         <th>Department</th>
                     </tr>
                 </thead>
-                <tbody id="resultBody">
-                    <!-- Results will be dynamically inserted here -->
+                <tbody>
+                    <% patients.forEach(pi => { %>
+                        <tr>
+                            <td><%= pi.Pid %></td>
+                            <td><%= pi.first_name %></td>
+                            <td><%= pi.last_name %></td>
+                            <td><%= pi.email %></td>
+                            <td><%= pi.phone_number %></td>
+                            <td><%= pi.department %></td>
+                        </tr>
+                    <% }); %>
                 </tbody>
             </table>
         </section>
+    </main>
 
+    <footer>
         <p>Done by: Hussain Alsari, Feras Alswalim, Mazn Alasmari, Abdulwahab Alharthy</p>
         <p>2024 &copy; Omega</p>
-        <footer></footer>
+    </footer>
 
-        <script>
-            async function searchPatient() {
-                const patientId = document.getElementById('Pid').value;
-                const response = await fetch(`/api/patients/${patientId}`);
-                const patient = await response.json();
-
-                if (patient) {
-                    const resultBody = document.getElementById('resultBody');
-                    resultBody.innerHTML = `
-                        <tr>
-                            <td>${patient.Pid}</td>
-                            <td>${patient.first_name}</td>
-                            <td>${patient.last_name}</td>
-                            <td>${patient.email}</td>
-                            <td>${patient.phone_number}</td>
-                            <td>${patient.department}</td>
-                        </tr>
-                    `;
-                } else {
-                    alert('No patient found with this ID');
-                }
-            }
-        </script>
-    </body>
+    <script>
+        function searchPatient() {
+            // Add JavaScript functionality to search for a patient
+            console.log("Search button clicked");
+        }
+    </script>
+</body>
 </html>
