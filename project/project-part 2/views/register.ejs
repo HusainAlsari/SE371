@@ -12,8 +12,11 @@
         <link rel="stylesheet" href="/css/style.css">
     </head>
     <body>
-        <form method="post"> 
+        <form action="/v1/patients" method="post"> 
             <legend>Patient registration form</legend>
+
+            <label for="Pid">ID</label>
+            <input type="text" id="Pid" name="Pid">
 
             <label for="firstName">First name</label>
             <input type="text" id="firstName" name="firstName" pattern="[a-zA-Z]{2,20}" title="2 to 20 letters">
