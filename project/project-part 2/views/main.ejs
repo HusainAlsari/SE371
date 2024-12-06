@@ -38,7 +38,7 @@
                         <th>Department</th>
                     </tr>
                 </thead>
-                <!-- <tbody>
+                <tbody>
                     <% patients.forEach(pi => { %>
                         <tr>
                             <td><%= pi.Pid %></td>
@@ -47,9 +47,23 @@
                             <td><%= pi.email %></td>
                             <td><%= pi.phone_number %></td>
                             <td><%= pi.department %></td>
+                            <td>
+                                <!-- Delete Button -->
+                                <form action="/v1/companies/del/<%= comp.id %>" method="POST" style="display: inline;" 
+                                      onsubmit="return confirm('Are you sure you want to delete this company?');">
+                                  <button type="submit" style="background-color: red; cursor: pointer;">Delete</button>
+                                </form>  
+                  
+                                <!-- Update Button -->
+                                <button type="button" style="background-color: blue; color: white; cursor: pointer;" 
+                                        onclick="openUpdateModal('<%= comp.id %>', '<%= comp.name %>', '<%= comp.address %>', 
+                                        '<%= comp.description %>', '<%= comp.capital %>', '<%= comp.owner %>')">
+                                  Update
+                                </button>
+                              </td>  
                         </tr>
                     <% }); %>
-                </tbody> -->
+                </tbody>
             </table>
         </section>
     </main>
