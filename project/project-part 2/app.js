@@ -12,31 +12,23 @@ app.use(express.static("public")); // Serve static files
 app.set("view engine", "ejs"); // Set EJS as the view engine
 
 // EJS Pages Rendering
-app.get("/", (req, res) => {
+app.get("/main", (req, res) => {
   res.render("main", {
-    data1: "Welcome to the Homepage",
-    data2: "Enjoy your stay!",
   });
 });
 
 app.get("/about", (req, res) => {
   res.render("about", {
-    data1: "About Us",
-    data2: "We are committed to excellence.",
   });
 });
 
 app.get("/register", (req, res) => {
   res.render("register", {
-    data1: "Register Here",
-    data2: "Join our community.",
   });
 });
 
 app.get("/helpPage", (req, res) => {
   res.render("helpPage", {
-    data1: "Help Page",
-    data2: "We're here to assist you.",
   });
 });
 
@@ -46,10 +38,10 @@ app.use((req, res) => {
 });
 
 // Routes
-app.get('/', async (req, res) => {
+app.get('/main', async (req, res) => {
   try {
     const patients = await PatientRegistrationTable.findAll();
-    res.render('index', { patients });
+    res.render('main', { patients });
   } catch (error) {
     console.error('Error fetching data:', error);
     res.status(500).send('Error fetching data');
