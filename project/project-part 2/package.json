@@ -1,0 +1,21 @@
+{
+  "name": "p1",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "app"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "dotnav": "^0.0.1",
+    "ejs": "^3.1.10",
+    "express": "^4.21.1",
+    "method-override": "^3.0.0",
+    "mysql2": "^3.11.5",
+    "sequelize": "^6.37.5"
+  },
+  "keywords": [],
+  "description": ""
+}
