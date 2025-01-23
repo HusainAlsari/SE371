@@ -1,0 +1,21 @@
+:root{
+--primary-color: Darkblue;
+--secondary-color: green;
+--tertiary-color: red;
+}
+th{
+    background-color: var(--primary-color);
+}
+.FirstColumn{
+    background-color: var(--secondary-color);
+    }
+ tr:nth-child(odd){
+    background-color: var(--tertiary-color);
+}
+td{
+    padding: 10px;
+}
+tr,td,th{
+    border-collapse: collapse;
+    border: solid 1px var(--primary-color)
+}
