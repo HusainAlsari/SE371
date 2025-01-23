@@ -1,44 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>Registration</title>
-        <nav>
-            <ul><a href="main">Main</a></ul>
-            <ul><a href="register">Register</a></ul>  
-            <ul><a href="about">About</a></ul>
-            <ul><a href="helpPage">Help Page</a></ul>     
-        </nav>
-        <link rel="stylesheet" href="/css-reset.css">
-        <link rel="stylesheet" href="/css/style.css">
-    </head>
-    <body>
-        <form action="/v1/patients" method="post"> 
-            <legend>Patient registration form</legend>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Patient Registration</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-gray-50">
+    <nav class="bg-blue-600 text-white shadow-lg">
+      <div class="container mx-auto px-6 py-3">
+        <ul class="flex space-x-8">
+          <li><a href="/main" class="hover:text-blue-200">Main</a></li>
+          <li><a href="/register" class="hover:text-blue-200">Register</a></li>
+          <li><a href="/about" class="hover:text-blue-200">About</a></li>
+          <li><a href="/helpPage" class="hover:text-blue-200">Help Page</a></li>
+        </ul>
+      </div>
+    </nav>
 
-            <label for="Pid">ID</label>
-            <input type="text" id="Pid" name="Pid">
+    <main class="container mx-auto px-4 py-8">
+      <div class="max-w-2xl mx-auto bg-white rounded-lg shadow-md p-8">
+        <h1 class="text-2xl font-bold mb-6 text-center">
+          Patient Registration Form
+        </h1>
 
-            <label for="firstName">First name</label>
-            <input type="text" id="firstName" name="firstName" pattern="[a-zA-Z]{2,20}" title="2 to 20 letters">
+        <form
+          action="/v1/patients"
+          method="post"
+          class="space-y-6"
+          id="registrationForm"
+        >
+          <div>
+            <label for="Pid" class="block text-sm font-medium text-gray-700"
+              >Patient ID</label
+            >
+            <input
+              type="text"
+              id="Pid"
+              name="Pid"
+              required
+              class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+            />
+            <p class="mt-1 text-sm text-gray-500">Required unique identifier</p>
+          </div>
 
-            <label for="lastName">Last name</label>
-            <input type="text" id="lastName" name="lastName" pattern="[a-zA-Z]{2,20}" title="2 to 20 letters">
+          <div>
+            <label
+              for="first_name"
+              class="block text-sm font-medium text-gray-700"
+              >First Name</label
+            >
+            <input
+              type="text"
+              id="first_name"
+              name="first_name"
+              required
+              pattern="[a-zA-Z]{2,20}"
+              class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+            />
+            <p class="mt-1 text-sm text-gray-500">2 to 20 letters only</p>
+          </div>
 
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" title="An email">
+          <div>
+            <label
+              for="last_name"
+              class="block text-sm font-medium text-gray-700"
+              >Last Name</label
+            >
+            <input
+              type="text"
+              id="last_name"
+              name="last_name"
+              required
+              pattern="[a-zA-Z]{2,20}"
+              class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+            />
+            <p class="mt-1 text-sm text-gray-500">2 to 20 letters only</p>
+          </div>
 
-            <label for="phoneNumber">Phone Number</label>
-            <input type="text" id="phoneNumber" name="phoneNumber" required pattern="[0-9]{10,14}" title="a phone number of 10 to 14 digits">
+          <div>
+            <label for="email" class="block text-sm font-medium text-gray-700"
+              >Email</label
+            >
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+            />
+          </div>
 
-            <label for="department">Department</label>
-            <input type="text" id="department" name="department" required>
+          <div>
+            <label
+              for="phone_number"
+              class="block text-sm font-medium text-gray-700"
+              >Phone Number</input
+            >
+            <input
+              type="tel"
+              id="phone_number"
+              name="phone_number"
+              required
+              pattern="[0-9]{10,14}"
+              class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+            />
+            <p class="mt-1 text-sm text-gray-500">10 to 14 digits</p>
+          </div>
 
-            <input type="submit">
-            <input type="reset">
+          <div>
+            <label
+              for="department"
+              class="block text-sm font-medium text-gray-700"
+              >Department</label
+            >
+            <select
+              id="department"
+              name="department"
+              required
+              class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+            >
+              <option value="">Select Department</option>
+              <option value="Cardiology">Cardiology</option>
+              <option value="Neurology">Neurology</option>
+              <option value="Orthopedics">Orthopedics</option>
+              <option value="Pediatrics">Pediatrics</option>
+              <option value="Internal Medicine">Internal Medicine</option>
+            </select>
+          </div>
+
+          <div class="flex space-x-4">
+            <button
+              type="submit"
+              class="flex-1 bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+            >
+              Register Patient
+            </button>
+            <button
+              type="reset"
+              class="flex-1 bg-gray-200 text-gray-700 py-2 px-4 rounded-md hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
+            >
+              Reset Form
+            </button>
+          </div>
         </form>
-        <footer>
-            <p>Done by: Hussain Alsari, Feras Alswalim, Mazn Alasmari, Abdulwahab Alharthy </p>
-            <p>2024 &copyOmega</p>
-        </footer>
-    </body>
+      </div>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-6 mt-12">
+      <div class="container mx-auto px-6 text-center">
+        <p class="mb-2">
+          Done by: Hussain Alsari, Feras Alswalim, Mazn Alasmari, Abdulwahab
+          Alharthy
+        </p>
+        <p>2024 &copy; Omega</p>
+      </div>
+    </footer>
+
+    <script>
+      document
+        .getElementById("registrationForm")
+        .addEventListener("submit", function (event) {
+          const phoneNumber = document.getElementById("phone_number").value;
+          if (!/^[0-9]{10,14}$/.test(phoneNumber)) {
+            event.preventDefault();
+            alert("Phone number must be between 10 and 14 digits");
+          }
+        });
+    </script>
+  </body>
 </html>

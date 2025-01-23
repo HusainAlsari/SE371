@@ -1,28 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Page</title>
-    <link rel="stylesheet" href="/css-reset.css">
-    <link rel="stylesheet" href="/css/style.css">
-</head>
-<body>
-    <nav>
-        <ul>
-            <li><a href="/main">Main</a></li>
-            <li><a href="/register">Register</a></li>
-            <li><a href="/about">About</a></li>
-            <li><a href="/helpPage">Help Page</a></li>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Patient Management System</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-gray-50">
+    <nav class="bg-blue-600 text-white shadow-lg">
+      <div class="container mx-auto px-6 py-3">
+        <ul class="flex space-x-8">
+          <li><a href="/main" class="hover:text-blue-200">Main</a></li>
+          <li><a href="/register" class="hover:text-blue-200">Register</a></li>
+          <li><a href="/about" class="hover:text-blue-200">About</a></li>
+          <li><a href="/helpPage" class="hover:text-blue-200">Help Page</a></li>
         </ul>
+      </div>
     </nav>
 
-    <main>
-        <h1>Search for Patients</h1>
-        <form>
-            <label for="Pid">Enter the ID of the patient:</label>
-            <input type="text" name="Pid" id="Pid" placeholder="Patient ID">
-            <button type="button" onclick="searchPatient()">Search</button>
+    <main class="container mx-auto px-6 py-8">
+      <h1 class="text-3xl font-bold mb-8">Patient Management System</h1>
+
+      <!-- Search Form -->
+      <div class="bg-white p-6 rounded-lg shadow-md mb-8">
+        <form onsubmit="searchPatient(event)" class="flex gap-4 items-end">
+          <div class="flex-1">
+            <label
+              for="Pid"
+              class="block text-sm font-medium text-gray-700 mb-1"
+              >Patient ID</label
+            >
+            <input
+              type="text"
+              name="Pid"
+              id="Pid"
+              class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+              placeholder="Enter Patient ID"
+            />
+          </div>
+          <button
+            type="submit"
+            class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+          >
+            Search
+          </button>
         </form>
 
         <section id="resultSection">
@@ -60,10 +84,86 @@
     </footer>
 
     <script>
-        function searchPatient() {
-            // Add JavaScript functionality to search for a patient
-            console.log("Search button clicked");
+      async function searchPatient(event) {
+        event.preventDefault();
+        const pid = document.getElementById("Pid").value.trim();
+        const messageDiv = document.getElementById("searchMessage");
+        const messagePara = messageDiv.querySelector("p");
+
+        if (!pid) {
+          // Show all rows if search is empty
+          document
+            .querySelectorAll("tbody tr")
+            .forEach((row) => (row.style.display = ""));
+          messageDiv.classList.add("hidden");
+          return;
         }
+
+        try {
+          const response = await fetch(`/v1/patients/search/${pid}`);
+          const data = await response.json();
+
+          const rows = document.querySelectorAll("tbody tr");
+
+          if (response.ok) {
+            // Show success message
+            messageDiv.classList.remove("hidden");
+            messagePara.textContent = "Patient found";
+            messagePara.className = "text-sm text-green-600";
+
+            // Highlight matching row
+            rows.forEach((row) => {
+              const idCell = row.querySelector("td:first-child");
+              if (idCell.textContent === pid) {
+                row.style.display = "";
+                row.classList.add("bg-blue-50");
+                // Scroll to the matching row
+                row.scrollIntoView({ behavior: "smooth", block: "center" });
+              } else {
+                row.style.display = "none";
+                row.classList.remove("bg-blue-50");
+              }
+            });
+          } else {
+            // Show error message
+            messageDiv.classList.remove("hidden");
+            messagePara.textContent = "Patient not found";
+            messagePara.className = "text-sm text-red-600";
+
+            // Hide all rows
+            rows.forEach((row) => {
+              row.style.display = "none";
+              row.classList.remove("bg-blue-50");
+            });
+          }
+        } catch (error) {
+          console.error("Error searching for patient:", error);
+          messageDiv.classList.remove("hidden");
+          messagePara.textContent = "Error searching for patient";
+          messagePara.className = "text-sm text-red-600";
+        }
+      }
+
+      function openUpdateModal(
+        pid,
+        firstName,
+        lastName,
+        email,
+        phone,
+        department
+      ) {
+        document.getElementById("updatePid").value = pid;
+        document.getElementById("updateFirstName").value = firstName;
+        document.getElementById("updateLastName").value = lastName;
+        document.getElementById("updateEmail").value = email;
+        document.getElementById("updatePhone").value = phone;
+        document.getElementById("updateDepartment").value = department;
+        document.getElementById("updateModal").classList.remove("hidden");
+      }
+
+      function closeUpdateModal() {
+        document.getElementById("updateModal").classList.add("hidden");
+      }
     </script>
-</body>
+  </body>
 </html>

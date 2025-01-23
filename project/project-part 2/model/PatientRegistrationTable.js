@@ -14,11 +14,11 @@ const PatientRegistrationTable = db.sequelize.define('PatientRegistrationTable',
     },
     email:{
         type: DataTypes.STRING,
-        unique:true
+        //unique:true
     },
     phone_number:{
         type: DataTypes.STRING,
-        unique:true
+       // unique:true
     },
     department:{
         type: DataTypes.STRING,
